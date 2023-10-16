@@ -9,10 +9,6 @@
 - pip3 install --upgrade tensorflow
 - pip install pillow
 
-### download FER2013 dataset
-- from below link and put in data folder under your project directory
-- https://www.kaggle.com/msambare/fer2013
-
 ### Train Emotion detector
 - with all face expression images in the FER2013 Dataset
 - command --> python TranEmotionDetector.py
@@ -27,5 +23,6 @@ copy these two files create model folder in your project directory and paste it.
 ### run your emotion detection test file
 python TestEmotionDetector.py
 
-data 
-### https://www.kaggle.com/datasets/msambare/fer2013/
+### download FER2013 dataset
+- data from below link and put in data folder under your project directory
+- https://www.kaggle.com/datasets/msambare/fer2013/
