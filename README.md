@@ -8,6 +8,8 @@
 - pip install keras
 - pip3 install --upgrade tensorflow
 - pip install pillow
+- pip3 install scipy   || opcional
+- conda install -c anaconda scipy || Opcional
 
 ### download FER2013 dataset
 - from below link and put in data folder under your project directory

@@ -46,7 +46,7 @@ while True:
         maxindex = int(np.argmax(emotion_prediction))
 
         # Mostrar la etiqueta de la emoción en el fotograma
-        cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(frame, emotion_dict[maxindex], (x+5, y-20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
     # Mostrar el fotograma con las detecciones de emociones
     cv2.imshow('Emotion Detection', frame)

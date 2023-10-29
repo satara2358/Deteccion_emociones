@@ -47,8 +47,9 @@ emotion_model.add(Dense(7, activation='softmax'))
 
 cv2.ocl.setUseOpenCL(False)
 
-# Compila el modelo con la función de pérdida y el optimizador
-emotion_model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
+# Compila el modelo con la función de pérdida y el optimizador  => 
+# emotion_model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.0001, decay=1e-6), metrics=['accuracy'])
+emotion_model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 # Entrena el modelo neuronal
 emotion_model_info = emotion_model.fit_generator(
