@@ -3,10 +3,13 @@
 ![emotion_detection](https://github.com/datamagic2020/Emotion_detection_with_CNN/blob/main/emoition_detection.png)
 
 ### Packages need to be installed
+- version 3.9.21 of python || env tensor || anaconda
 - pip install numpy
+- pip install matplotlib
+- pip install scikit-learn
 - pip install opencv-python
 - pip install keras
-- pip3 install --upgrade tensorflow
+- pip3 install --upgrade tensorflow  ||| optional || pip install tensorflow-cpu
 - pip install pillow
 - pip3 install scipy   || opcional
 - conda install -c anaconda scipy || Opcional
@@ -28,3 +31,24 @@ python TestEmotionDetector.py
 ### download FER2013 dataset
 - data from below link and put in data folder under your project directory
 - https://www.kaggle.com/datasets/msambare/fer2013/
+
+
+
+Fila 3, columna 3 = 445: El modelo clasificó correctamente 445 imágenes de Happy como Happy.
+
+Fila 3, columna 5 = 376: El modelo confundió 376 imágenes de Happy como Surprise.
+
+Fila 0, columna 3 = 247: El modelo confundió 247 imágenes de Angry como Happy.
+
+❌ ¿Qué te dice esta matriz?
+El modelo tiende a confundir emociones similares, como:
+
+Angry ↔ Happy
+
+Fear ↔ Sad / Surprise
+
+Happy ↔ Surprise / Neutral
+
+Disgust (clase 1) está muy mal representada → probablemente pocas imágenes o poca capacidad del modelo para distinguirla.
+
+Happy (clase 3) parece tener más aciertos que otras, pero aún así presenta confusiones.
