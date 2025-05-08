@@ -3,7 +3,9 @@ import cv2
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Dropout, Flatten
 from keras.optimizers import Adam
-from keras.preprocessing.image import ImageDataGenerator
+# from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
 
 # Inicializa generadores de datos de imágenes y aplica reescalamiento
 train_data_gen = ImageDataGenerator(rescale=1./255)
@@ -52,17 +54,32 @@ cv2.ocl.setUseOpenCL(False)
 emotion_model.compile(loss='categorical_crossentropy', optimizer='adam')
 
 # Entrena el modelo neuronal
-emotion_model_info = emotion_model.fit_generator(
+# emotion_model_info = emotion_model.fit_generator(
+#     train_generator,
+#     steps_per_epoch=28709 // 64,
+#     epochs=50,
+#     validation_data=validation_generator,
+#     validation_steps=7178 // 64)
+emotion_model_info = emotion_model.fit(
     train_generator,
     steps_per_epoch=28709 // 64,
     epochs=50,
     validation_data=validation_generator,
-    validation_steps=7178 // 64)
+    validation_steps=7178 // 64
+)
 
-# Guarda la estructura del modelo en un archivo JSON
+# # Guarda la estructura del modelo en un archivo JSON
+# model_json = emotion_model.to_json()
+# with open("emotion_model.json", "w") as json_file:
+#     json_file.write(model_json)
+
+# # Guarda los pesos entrenados del modelo en un archivo .h5
+# emotion_model.save_weights('emotion_model.h5')
+# Guardar arquitectura en JSON
 model_json = emotion_model.to_json()
 with open("emotion_model.json", "w") as json_file:
     json_file.write(model_json)
 
-# Guarda los pesos entrenados del modelo en un archivo .h5
-emotion_model.save_weights('emotion_model.h5')
+# Guardar pesos
+emotion_model.save_weights("emotion_model.weights.h5")
+print("Modelo guardado en disco.")
