@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 from keras.models import model_from_json
+# from keras.models import model_from_json, Sequential
+
 
 # Diccionario para mapear etiquetas de emociones a nombres
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
@@ -12,7 +14,7 @@ json_file.close()
 emotion_model = model_from_json(loaded_model_json)
 
 # Cargar los pesos entrenados en el modelo
-emotion_model.load_weights("model/emotion_model.h5")
+emotion_model.load_weights("model/emotion_model.weights.h5")
 print("Modelo cargado desde el disco")
 
 # Iniciar la alimentación de la cámara web
