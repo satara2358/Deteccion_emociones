@@ -1,7 +1,8 @@
 import numpy as np
 from keras.models import model_from_json
 import matplotlib.pyplot as plt
-from keras.preprocessing.image import ImageDataGenerator
+# from keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from sklearn.metrics import confusion_matrix, classification_report, ConfusionMatrixDisplay
 
 # Diccionario para mapear etiquetas de emociones a nombres
@@ -14,7 +15,7 @@ json_file.close()
 emotion_model = model_from_json(loaded_model_json)
 
 # Cargar los pesos entrenados en el modelo
-emotion_model.load_weights("model/emotion_model.h5")
+emotion_model.load_weights("model/emotion_model.weights.h5")
 print("Modelo cargado desde el disco")
 
 # Inicializar generador de datos de imágenes con reescalado
@@ -29,7 +30,9 @@ test_generator = test_data_gen.flow_from_directory(
     class_mode='categorical')
 
 # Realizar predicciones en los datos de prueba
-predictions = emotion_model.predict_generator(test_generator)
+# predictions = emotion_model.predict_generator(test_generator)
+predictions = emotion_model.predict(test_generator)
+
 
 # Matriz de confusión
 print("-----------------------------------------------------------------")
